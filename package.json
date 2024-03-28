@@ -1,0 +1,13 @@
+{
+  "name": "quize-by-pku",
+  "version": "0.1.0",
+  "private": true,
+  "author": {
+    "name": "ZiChun Guo",
+    "email": "guotingchaopr@gmail.com"
+  },
+  "packageManager": "yarn@4.1.1",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {}
+}
