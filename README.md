@@ -1,25 +1,33 @@
 # QuizeByPKU
 
-### Introduction
+---
+
+## Introduction
 
 ---
 
-Dear Interviewer:
-I am ZiChun Guo and this code repository of the results of this quiz.
+Dear Interviewer My name is Guo ZiChun, this is the code repository for the results of this quiz, please allow me to clarify a few things before we begin.
 
-The following points need to be explained to you:
+> _Due to my current time constraints, it is too risky to consider using native JS and CSS+HTML for this quiz, so I have used the following technology stack for this quiz_.
 
-_This project could not be done with fully native JS and CSS+HTML due to my personal time constraints, so I used the following technology stack_
+### Technology Stack
 
-- React
+- Response
+
 - Typescript
+
 - Bundle
+
 - TailwindCss
+
+### File Structure
+
+#### Steps
 
 ### Preview Screenshots
 
--
+---
 
--
+### Preview address
 
--
+[preview address](https://quizebypku.netlify.app/)
