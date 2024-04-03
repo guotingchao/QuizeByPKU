@@ -1,0 +1,23 @@
+.btn {
+  @apply bg-black/20 px-4 py-2 text-sm font-medium text-white;
+  @apply min-w-24 min-h-10;
+  @apply shadow-md rounded-md;
+  @apply hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75;
+  @apply hover:cursor-pointer hover:shadow-none;
+
+  &.small {
+    @apply px-2 py-1.5 text-sm font-thin;
+  }
+  &.medium {
+    @apply px-5 py-2 text-base font-medium;
+  }
+  &.large {
+    @apply px-7 py-3 text-lg font-semibold;
+  }
+  &.fullWidth {
+    @apply w-full block;
+  }
+  &.disabled {
+    @apply bg-gray-300 text-gray-500 dark:bg-gray-700 dark:text-gray-400 cursor-not-allowed;
+  }
+}
