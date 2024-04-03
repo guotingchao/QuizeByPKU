@@ -15,12 +15,12 @@ jobs:
       - name: 设置 Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20.10.0
       
       - name: 切换到Yarn@v4
         run: |-
           corepack enable
-          yarn set-version stable
+          yarn set version stable
 
       - name: 安装依赖
         run: yarn
