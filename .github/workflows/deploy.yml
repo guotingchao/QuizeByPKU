@@ -23,7 +23,7 @@ jobs:
           yarn set-version stable
 
       - name: 安装依赖
-        run: yarn install --frozen-lockfile
+        run: yarn
 
       - name: 构建页面
         env:
