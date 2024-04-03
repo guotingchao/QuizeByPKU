@@ -102,6 +102,7 @@ export default {
       ? [
           serve({
             open: true,
+            caches: false,
             openPage: "index.html",
             contentBase: "dist",
             host: "0.0.0.0",

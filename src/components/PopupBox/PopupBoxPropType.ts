@@ -7,4 +7,23 @@ export interface PopupBoxProps {
   destroyOnClose?: boolean;
   mask?: boolean;
   maskClose?: boolean;
+  categories?: CategoriesType[];
+  title: string;
 }
+export interface PopupBoxAddItemProps {
+  show: boolean;
+  onModalClose: VoidFunction;
+  onAddCategoriesSubItem: (data: any) => void;
+}
+
+export type CategoriesItem = {
+  name: string;
+  url: string;
+  icon?: string;
+};
+
+export type CategoriesType = {
+  name: string;
+  index: number;
+  items: CategoriesItem[];
+};

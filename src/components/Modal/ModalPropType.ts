@@ -17,8 +17,14 @@ export interface ModalContentProps {
   children?: any;
 }
 
+export interface ModalHeadProps {
+  title?: ReactNode | string;
+  onClose: VoidFunction;
+}
+
 export interface ModalProps {
   onClose?: () => void;
+  container?: ContainerType;
   onOpen?: () => void;
   useEsc?: boolean; //是否可以使用esc键关闭
   open?: boolean; //是否打开
@@ -31,7 +37,7 @@ export interface ModalProps {
 }
 
 // Portal
-export type ContainerReturnType = Element | DocumentFragment;
+export type ContainerReturnType = Element | DocumentFragment | null;
 export type ContainerType = string | (() => ContainerReturnType);
 export interface PortalProps {
   children: any;

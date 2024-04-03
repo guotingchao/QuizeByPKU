@@ -55,13 +55,16 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       size = "medium",
       ...rest
     } = props;
-    const classes = classNames(className, {
-      btn: true,
-      small: size === "small",
-      medium: size === "medium",
-      large: size === "large",
-      disabled: disabled
-    });
+    const classes = classNames(
+      {
+        small: size === "small",
+        medium: size === "medium",
+        large: size === "large",
+        disabled: disabled
+      },
+      className
+    );
+
     const innerRef = createRef<HTMLButtonElement>();
 
     const buttonRef = composeRef(ref, innerRef);

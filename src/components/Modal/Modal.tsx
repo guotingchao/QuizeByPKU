@@ -7,12 +7,14 @@ import {
   useRef,
   useState
 } from "react";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 import { Globals } from "src/common";
 
 import { ModalContext } from "./ModalContext";
 import {
   MaskProps,
   ModalContentProps,
+  ModalHeadProps,
   ModalProps,
   ModalWrapperProps
 } from "./ModalPropType";
@@ -28,7 +30,7 @@ const Mask = forwardRef<any, MaskProps>(
       enter="ease-out duration-300"
       enterFrom="opacity-0 scale-75"
       enterTo="opacity-100 scale-100"
-      leave="ease-in duration-200 delay-50"
+      leave="ease-in duration-300 delay-50"
       leaveFrom="opacity-100 scale-100"
       leaveTo="opacity-0 scale-75"
       className="fixed inset-0 bg-black/20 w-screen h-screen z-[1050]"
@@ -49,10 +51,10 @@ const ModalWrapper = forwardRef<HTMLDialogElement, ModalWrapperProps>(
       enter="transform transition duration-300 ease-out delay-50"
       enterFrom="opacity-0 scale-0"
       enterTo="opacity-100 scale-100"
-      leave="transform transition duration-400 ease-in-out"
+      leave="transform transition duration-300 ease-in-out"
       leaveFrom="opacity-100 scale-100"
       leaveTo="opacity-0 scale-0"
-      className="fixed inset-0 w-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all z-[1050]"
+      className="z-[1050] fixed translate-y-6 transform px-2 py-3 shadow-2xl transition-all rounded-xl"
     >
       {children}
     </Transition>
@@ -62,16 +64,30 @@ const ModalWrapper = forwardRef<HTMLDialogElement, ModalWrapperProps>(
 // Content
 const Content: FC<ModalContentProps> = ({ children }) => children;
 
+// Head
+const Head: FC<ModalHeadProps> = ({ title, onClose }) => (
+  <div className="w-full flex justify-between px-2 py-3">
+    <h1 className="font-sans font-black text-pretty">{title || "New Modal"}</h1>
+    <AiOutlineCloseCircle
+      onClick={onClose}
+      className="text-gray-400 hover:text-gray-700 hover:cursor-pointer"
+      size={22}
+    />
+  </div>
+);
+
 // Modal
 const Modal: FC<ModalProps> = (props) => {
   const {
+    title,
     open = false,
     useEsc = true,
     mask = true,
     maskClose = true,
+    container,
     onOpen,
     onClose,
-    destroyOnClose = false,
+    destroyOnClose: _ = false,
     children
   } = props;
 
@@ -92,9 +108,14 @@ const Modal: FC<ModalProps> = (props) => {
   const handleMaskClick = (e: React.SyntheticEvent) => {
     e.stopPropagation();
     if (maskClose) {
-      setInnerOpen(false);
-      onClose?.();
+      internalClose();
     }
+  };
+
+  // internel close event
+  const internalClose = () => {
+    setInnerOpen(false);
+    onClose?.();
   };
 
   useEffect(() => {
@@ -107,7 +128,6 @@ const Modal: FC<ModalProps> = (props) => {
   }, [open, useEsc]);
 
   useEffect(() => {
-    console.log("wrapperRef", wrapperRef.current);
     if (useEsc && wrapperRef.current) {
       wrapperRef.current.focus();
     }
@@ -115,15 +135,18 @@ const Modal: FC<ModalProps> = (props) => {
 
   return (
     <ModalContext.Provider value={props}>
-      <Portal visible ref={portalRef}>
-        <Mask mask={maskVisible} maskClick={handleMaskClick} />
-        <ModalWrapper
-          ref={wrapperRef}
-          visible={innerOpen}
-          onKeyDown={handleWarpperKeyDown}
-        >
-          <Content>{children}</Content>
-        </ModalWrapper>
+      <Portal visible ref={portalRef} container={container}>
+        <div className="relative w-auto">
+          <Mask mask={maskVisible} maskClick={handleMaskClick} />
+          <ModalWrapper
+            ref={wrapperRef}
+            visible={innerOpen}
+            onKeyDown={handleWarpperKeyDown}
+          >
+            <Head title={title} onClose={internalClose} />
+            <Content>{children}</Content>
+          </ModalWrapper>
+        </div>
       </Portal>
     </ModalContext.Provider>
   );

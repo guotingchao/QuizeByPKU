@@ -14,7 +14,7 @@ const createContainer = (container?: ContainerType): ContainerReturnType => {
   if (typeof container === "function") {
     return container();
   }
-  return document.body;
+  return null;
 };
 
 export type TPortalRef = {
@@ -32,9 +32,11 @@ export const Portal = forwardRef<TPortalRef, PortalProps>(
 
     React.useImperativeHandle(ref, () => ({
       destroy: () => {
-        console.log("destroy", containerRef.current);
-        if (containerRef && containerRef.current)
+        if (containerRef && containerRef.current && targetContainer) {
           targetContainer.removeChild(containerRef.current);
+        } else {
+          containerRef.current?.remove();
+        }
       }
     }));
 
@@ -42,7 +44,7 @@ export const Portal = forwardRef<TPortalRef, PortalProps>(
       <div className="ProtalWrapper" ref={containerRef}>
         {children}
       </div>,
-      targetContainer
+      targetContainer ?? document.body
     );
   }
 );

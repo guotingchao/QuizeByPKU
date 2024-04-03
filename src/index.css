@@ -4,4 +4,10 @@
 
 :root {
   --baseClor: bg-blue-700;
+  ::-webkit-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+    /* WebKit浏览器（如Chrome、Safari） */
+    display: none;
+  }
 }
