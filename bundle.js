@@ -1311,7 +1311,8 @@
                   })]
                 }, "".concat(categoriesItem.name, "_").concat(index));
               })
-            }), /*#__PURE__*/jsxRuntimeExports.jsx("div", {
+            }), localCategories.length < 10 && /*#__PURE__*/jsxRuntimeExports.jsx("div", {
+              title: "addCategory",
               className: "float right-0 flex justify-center items-center text-gray-500  rounded-none text-base font-medium leading-5 ring-0 outline-none px-2 text-center hover:cursor-pointer hover:text-gray-800",
               children: /*#__PURE__*/jsxRuntimeExports.jsx(AiFillPlusCircle, {
                 size: 24,
