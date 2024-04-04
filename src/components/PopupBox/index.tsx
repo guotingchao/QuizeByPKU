@@ -259,9 +259,17 @@ export const PopupBox: FC<PopupBoxProps> = (props) => {
                   </Tab>
                 ))}
             </Tab.List>
-            <div className="float right-0 flex justify-center items-center text-gray-500  rounded-none text-base font-medium leading-5 ring-0 outline-none px-2 text-center hover:cursor-pointer hover:text-gray-800">
-              <AiFillPlusCircle size={24} onClick={() => handleAddCategory()} />
-            </div>
+            {localCategories.length < 10 && (
+              <div
+                title="addCategory"
+                className="float right-0 flex justify-center items-center text-gray-500  rounded-none text-base font-medium leading-5 ring-0 outline-none px-2 text-center hover:cursor-pointer hover:text-gray-800"
+              >
+                <AiFillPlusCircle
+                  size={24}
+                  onClick={() => handleAddCategory()}
+                />
+              </div>
+            )}
           </div>
           <PopupBoxContent />
         </Tab.Group>

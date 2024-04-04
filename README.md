@@ -8,7 +8,9 @@
 
 Dear Interviewer My name is Guo ZiChun, this is the code repository for the results of this quiz, please allow me to clarify a few things before we begin.
 
-> _Due to my current time constraints, it is too risky to consider using native JS and CSS+HTML for this quiz, so I have used the following technology stack for this quiz_.
+> The current project implements features including requirements and is stored in localStorage . The content displayed when the default is empty is automatically pre-populated with Mock data.
+
+> Time is too tight to me. It's a lot of work.  :)
 
 ### Technology Stack
 
@@ -20,14 +22,21 @@ Dear Interviewer My name is Guo ZiChun, this is the code repository for the resu
 
 - TailwindCss
 
-### File Structure
 
-#### Steps
+#### Run Steps
 
-### Preview Screenshots
+```bash
+ # first, because of the yarn use the version v4.9.5
+ corepack enabled
+ yarn set version stable
 
----
+# if u want to dev
+yarn dev # or yarn install
+
+# if u want to build
+ yarn build
+```
 
 ### Preview address
 
-[preview address](https://quizebypku.netlify.app/)
+[Preview](https://guotingchao.github.io/QuizeByPKU/)

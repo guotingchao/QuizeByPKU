@@ -1,4 +1,4 @@
-name: 部署文档
+name: Test & Deploy
 permissions:
   contents: write
 on:
@@ -11,13 +11,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-       
 
       - name: 设置 Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20.10.0
-      
+
       - name: 切换到Yarn@v4
         run: |-
           corepack enable
@@ -32,7 +31,7 @@ jobs:
         run: |-
           yarn run build
 
-      - name: 部署文档
+      - name: 部署gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages

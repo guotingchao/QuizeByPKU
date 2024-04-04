@@ -5,17 +5,16 @@
 ## 简介
 
 ---
-
-尊敬的面试官 我是郭子淳，这是本次测验结果的代码仓库, 在开始前有几些情况请容许我向您阐明:
-
-> _由于我个人目前时间原因，本测验考虑使用原生 JS 和 CSS+HTML 来完成风险过高，所以我使用了以下技术栈来完成本次测验_
+> 目前项目实现的功能有包括需求在内的，并且存储在localStorage中.默认为空时显示的内容为自动预填充的Mock数据。
 
 ### 技术栈
+- Typescript@V4.9.5
+- Rollup@V4.13
+- TailwindCss@V3
 
-- 反应
-- Typescript
-- 捆绑
-- TailwindCss
+
+### 基本
+
 
 ### 结构说明
 
@@ -23,12 +22,7 @@
 
 ## 预览截图
 
----
-
--
-
--
 
 ### 预览地址
 
-[预览地址](https://quizebypku.netlify.app/)
+[预览地址](https://guotingchao.github.io/QuizeByPKU/)
